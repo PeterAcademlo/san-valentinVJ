@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+    <title>love V</title>
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        /* Agrega un estilo inicial para el texto */
+        .text::before {
+            content: " Amada mía";
+        }
+
+        .text[data-index="1"]::before {
+            content: "Que";
+        }
+
+        .text[data-index="2"]::before {
+            content: "esta";
+        }
+
+        .text[data-index="3"]::before {
+            content: "historia";
+        }
+
+        .text[data-index="4"]::before {
+            content: "nunca";
+        }
+
+        .text[data-index="5"]::before {
+            content: "nunca";
+        }
+
+        .text[data-index="6"]::before {
+            content: "acabe";
+        }
+
+        .text[data-index="7"]::before {
+            content: "mi";
+        }
+
+        .text[data-index="8"]::before {
+            content: "futura";
+        }
+
+        .text[data-index="9"]::before {
+            content: "REYNA";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="happy-valentines">
+        <div class="valentines-day-card">
+            <div class="clouds"></div>
+            <div class="hearts">
+                <div class="heartOne">
+                    <div class="left-side"></div>
+                    <div class="right-side"></div>
+                </div>
+                <div class="heartTwo">
+                    <div class="left-side"></div>
+                    <div class="right-side"></div>
+                </div>
+                <div class="heartThree">
+                    <div class="left-side"></div>
+                    <div class="right-side"></div>
+                </div>
+                <div class="heartFour">
+                    <div class="left-side"></div>
+                    <div class="right-side"></div>
+                </div>
+                <div class="heartFive">
+                    <div class="left-side"></div>
+                    <div class="right-side"></div>
+                </div>
+            </div>
+            <div class="text" data-index="0"></div>
+        </div>
+    </div>
+    <i  id="abrirModal" class='bx bxs-bookmark-heart' style='color:#ffffff'  ></i>
+
+    <div id="miModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="cerrarModal">&times;</span>
+            <img src="img/fotito.jpeg" alt="Fotito">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const textElement = document.querySelector('.text');
+            let currentIndex = 0;
+
+            // Array con los textos a mostrar
+            const texts = [
+                "Texto 1",
+                "Texto 2",
+                "Texto 3",
+                "Texto 4",
+                "Texto 5",
+                "Texto 6",
+                "Texto 7",
+                "Texto 8",
+                "Texto 9"
+            ];
+
+            // Función para cambiar el texto cada 5 segundos
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                textElement.dataset.index = currentIndex;
+                // Aquí no cambiamos el contenido del texto, solo el índice
+            }, 1500);  // Aquí cambiamos el intervalo de 1000 a 5000 milisegundos
+
+            // Obtener referencia a elementos DOM
+            var modal = document.getElementById("miModal");
+            var abrirBtn = document.getElementById("abrirModal");
+            var cerrarBtn = document.getElementById("cerrarModal");
+
+            // Función para abrir el modal con una transición suave
+            function abrirModal() {
+                modal.style.display = "block";
+                setTimeout(() => { // Establecemos la opacidad a 1 después de un breve tiempo para iniciar la transición
+                    modal.style.opacity = "1";
+                }, 1000);
+            }
+
+            // Abrir el modal cuando se haga clic en el botón de abrir
+            abrirBtn.addEventListener("click", abrirModal);
+
+            // Cerrar el modal cuando se haga clic en el botón de cerrar
+            cerrarBtn.addEventListener("click", function () {
+                modal.style.opacity = "0"; // Establecemos la opacidad a 0 para iniciar la transición
+                setTimeout(() => { // Esperamos 2 segundos antes de ocultar completamente el modal
+                    modal.style.display = "none";
+                }, 2000);
+            });
+
+            // Cerrar el modal si el usuario hace clic fuera de él
+            window.addEventListener("click", function (event) {
+                if (event.target == modal) {
+                    modal.style.opacity = "0"; // Establecemos la opacidad a 0 para iniciar la transición
+                    setTimeout(() => { // Esperamos 2 segundos antes de ocultar completamente el modal
+                        modal.style.display = "none";
+                    }, 2000);
+                }
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
